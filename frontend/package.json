@@ -15,7 +15,7 @@
   },
   "dependencies": {
     "@nuxtjs/auth": "^4.0.0-rc.3",
-    "@nuxtjs/axios": "^5.0.0",
+    "@nuxtjs/axios": "^5.0.1",
     "@nuxtjs/toast": "^2.3.3",
     "body-parser": "^1.18.2",
     "bootstrap-vue": "^2.0.0-rc.1",

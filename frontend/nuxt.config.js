@@ -31,10 +31,8 @@ module.exports = {
     'bootstrap-vue/nuxt'
   ],
   axios: {
-    proxy: true
-  },
-  proxy: {
-    '/api': 'http://django:8000'
+    baseURL: 'http://django:8000',
+    browserBaseURL: 'http://localhost:8000'
   },
   toast: {
     position: 'center',
@@ -49,7 +47,8 @@ module.exports = {
     },
     token: {
       type: 'Token',
-      name: 'token'
+      //name: 'token'
+      name: false
     },
     redirect: {
       login: '/login',
@@ -59,7 +58,8 @@ module.exports = {
   /* Plugins */
   plugins: [
     // '~/plugins/bootstrap',
-    '~/plugins/validate'
+    '~/plugins/validate',
+    '~/plugins/axios'
   ],
   /*
   ** Build configuration
