@@ -1,0 +1,36 @@
+version: '3'
+
+services:
+    db:
+        image: postgres
+    django:
+        build:
+            context: ./backend
+        command: ./wait-for-it.sh db:5432 -- pipenv run ./spacenews/manage.py runserver 0.0.0.0:8000
+        expose:
+            - "8000"
+        volumes:
+            - ./backend:/app
+        depends_on:
+            - db
+    nuxt:
+        build:
+            context: ./frontend
+        command: bash -c "npm run dev"
+        volumes:
+            - ./frontend:/app
+        expose:
+            - "3000"
+        ports:
+            - "3000:3000"
+        depends_on:
+            - django
+    nginx:
+        image: nginx:latest
+        ports:
+            - "8000:8000"
+        volumes:
+            - ./config/nginx:/etc/nginx/conf.d
+        depends_on:
+            - django
+            - nuxt
