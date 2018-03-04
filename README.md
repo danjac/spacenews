@@ -12,6 +12,8 @@ Both the NuxtJS application and Django API run behind nginx.
 
 This is NOT a production ready application and bugs are to be expected.
 
+I think this is a promising platform for building serious projects, but needs some exploration of the gotchas, pitfalls and strategies.
+
 Getting started
 ---------------
 
