@@ -5,3 +5,4 @@ ADD . /app
 WORKDIR /app
 RUN pip install pipenv
 RUN pipenv install --dev
+RUN pipenv run ./spacenews/manage.py migrate
