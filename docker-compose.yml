@@ -9,7 +9,7 @@ services:
             context: ./backend
         command: ./wait-for-it.sh db:5432 -- pipenv run ./spacenews/manage.py runserver 0.0.0.0:8000
         environment:
-            - DJANGO_SECRET_KEY=secret
+            - DJANGO_SECRET_KEY=seekret
             - DATABASE_URL=postgresql://postgres@db:5432/postgres
         expose:
             - "8000"
