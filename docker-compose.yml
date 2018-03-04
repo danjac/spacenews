@@ -2,11 +2,15 @@ version: '3'
 
 services:
     db:
+        restart: always
         image: postgres
     django:
         build:
             context: ./backend
         command: ./wait-for-it.sh db:5432 -- pipenv run ./spacenews/manage.py runserver 0.0.0.0:8000
+        environment:
+            - DJANGO_SECRET_KEY=secret
+            - DATABASE_URL=postgresql://postgres@db:5432/postgres
         expose:
             - "8000"
         volumes:
