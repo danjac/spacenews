@@ -115,6 +115,7 @@ class Base(Configuration):
 class Development(Base):
     DEBUG = values.BooleanValue(True)
     CORS_ORIGIN_ALLOW_ALL = True
+    ALLOWED_HOSTS = ['django', 'localhost']
 
 
 class Production(Base):
