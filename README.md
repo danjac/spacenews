@@ -4,7 +4,7 @@ Django/Nuxt reference application
 Overview
 --------
 
-This is an experiment in using NuxtJS (the SSR Vue framework) with Django as a backend.
+This is an experiment in using NuxtJS (the SSR Vue framework) with Django as a backend. It's otherwise just a stupid simple Hacker News clone.
 
 Django Rest Framework is used to generate the API, with Djoser for auth endpoints (connecting to the NuxtJS auth-module on the frontend).
 
@@ -25,3 +25,5 @@ docker-compose exec django bash
 ./spacenews/manage.py migrate
 ./spacenews/manage.py createsuperuser
 ```
+
+Once everything is up and running open http://localhost:8000 in your browser.
