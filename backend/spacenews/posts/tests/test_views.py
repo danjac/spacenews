@@ -15,7 +15,7 @@ User = get_user_model()
 
 
 @mixer.middleware(User)
-def encrypt_password(user):
+def encrypt_password(user: User) -> User:
     user.set_password('test')
     return user
 
@@ -26,7 +26,7 @@ def client():
 
 
 @pytest.mark.django_db
-def test_list_posts(client):
+def test_list_posts(client: APIClient) -> None:
 
     mixer.cycle(5).blend(Post)
 
@@ -38,7 +38,7 @@ def test_list_posts(client):
 
 
 @pytest.mark.django_db
-def test_create_post(client):
+def test_create_post(client: APIClient) -> None:
 
     user = mixer.blend(User)
     client.login(username=user, password='test')
@@ -58,7 +58,7 @@ def test_create_post(client):
 
 
 @pytest.mark.django_db
-def test_retrieve_post(client):
+def test_retrieve_post(client: APIClient) -> None:
 
     post = mixer.blend(Post)
     response = client.get(f'/api/posts/{post.id}/')
@@ -70,7 +70,7 @@ def test_retrieve_post(client):
 
 
 @pytest.mark.django_db
-def test_comments(client):
+def test_comments(client: APIClient) -> None:
 
     post = mixer.blend(Post)
     mixer.cycle(5).blend(Comment, post=post)
@@ -82,7 +82,7 @@ def test_comments(client):
 
 
 @pytest.mark.django_db
-def test_add_comment(client):
+def test_add_comment(client: APIClient) -> None:
 
     post = mixer.blend(Post)
     user = mixer.blend(User)
@@ -105,7 +105,7 @@ def test_add_comment(client):
 
 
 @pytest.mark.django_db
-def test_update_post(client):
+def test_update_post(client: APIClient) -> None:
 
     post = mixer.blend(Post)
 
@@ -126,7 +126,7 @@ def test_update_post(client):
 
 
 @pytest.mark.django_db
-def test_delete_post(client):
+def test_delete_post(client: APIClient) -> None:
 
     post = mixer.blend(Post)
 

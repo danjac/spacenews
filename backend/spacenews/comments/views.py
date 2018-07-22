@@ -1,4 +1,7 @@
+from typing import Optional
+
 from rest_framework import mixins, viewsets, permissions, status
+from rest_framework.request import Request
 from rest_framework.response import Response
 from rest_framework.decorators import detail_route
 
@@ -23,7 +26,7 @@ class CommentViewSet(mixins.RetrieveModelMixin,
         methods=['post'],
         permission_classes=[permissions.IsAuthenticated],
     )
-    def reply(self, request, pk=None):
+    def reply(self, request: Request, pk=Optional[str]) -> Response:
         serializer = self.get_serializer(data=request.data)
         serializer.is_valid(raise_exception=True)
 

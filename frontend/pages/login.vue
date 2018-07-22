@@ -26,6 +26,14 @@ export default {
     async submit () {
       try {
         await this.$store.dispatch('login', this.form)
+        let nextUrl = '/'
+        if (this.$route.query.next) {
+          nextUrl = decodeURIComponent(this.$route.query.next)
+        }
+        if (!nextUrl.startsWith('/')) {
+          nextUrl = '/'
+        }
+        this.$router.push(nextUrl)
         this.$toast.success('Logged in')
       } catch(e) {
         this.$toast.error('Bad credentials')

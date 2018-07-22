@@ -17,6 +17,10 @@ export default {
       await this.$axios.$post('/auth/login/', creds)
       const data = await this.$axios.$get('/api/auth/me/')
       commit('SET_USER', data)
+    },
+    logout ({ commit }) {
+      this.$axios.$post('/auth/logout/')
+      commit('SET_USER', null)
     }
   },
   mutations: {
