@@ -4,6 +4,12 @@ services:
   db:
     restart: always
     image: postgres
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+
+  redis:
+    restart: always
+    image: redis
 
   django:
     build:
@@ -29,3 +35,7 @@ services:
       - "3000:3000"
     depends_on:
       - django
+      - redis
+
+volumes:
+  pgdata:

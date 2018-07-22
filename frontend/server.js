@@ -5,7 +5,7 @@ const csurf = require('csurf')
 const proxy = require('http-proxy-middleware')
 const axios = require('axios')
 const app = require('express')()
-// const RedisStore = require('connect-redis')(session);
+const RedisStore = require('connect-redis')(session);
 
 const API_URI = process.env.API_URI || 'http://django:8000'
 
@@ -13,11 +13,10 @@ let config = require('./nuxt.config')
 config.isDev = process.env.NODE_ENV !== 'production'
 
 app.use(session({
-  /*
   store: new RedisStore({
-
+    host: 'redis',
+    port: 6379
   }),
-  */
   secret: 'super-secret-key', // TBD: grab from env
   resave: false,
   saveUninitialized: false,
