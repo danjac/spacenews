@@ -11,12 +11,12 @@
           <b-nav-item to="/submit">Submit</b-nav-item>
         </b-navbar-nav>
 
-        <b-navbar-nav class="ml-auto" v-if="$auth.state.loggedIn">
-          <b-nav-text>{{ $auth.state.user.username }}</b-nav-text>
+        <b-navbar-nav class="ml-auto" v-if="$store.state.loggedIn">
+          <b-nav-text>{{ $store.state.user.username }}</b-nav-text>
           <b-nav-item @click.prevent="logout()">Logout</b-nav-item>
         </b-navbar-nav>
 
-        <b-navbar-nav class="ml-auto" v-if="!$auth.state.loggedIn">
+        <b-navbar-nav class="ml-auto" v-if="!$store.state.loggedIn">
           <b-nav-item to="/login">Login</b-nav-item>
           <b-nav-item to="/signup">Signup</b-nav-item>
         </b-navbar-nav>
@@ -33,9 +33,7 @@
 <script>
 export default {
   methods: {
-    async logout () {
-      await this.$auth.logout()
-      this.$axios.setHeader('Authorization', null)
+    logout () {
     }
   }
 }

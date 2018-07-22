@@ -1,7 +1,7 @@
 <template>
   <div>
     <post :post="post"></post>
-    <b-form v-if="$auth.state.loggedIn" @submit.prevent="submitComment" novalidate class="mt-4">
+    <b-form v-if="$store.state.loggedIn" @submit.prevent="submitComment" novalidate class="mt-4">
       <b-form-group
         :invalid-feedback="errors.first('content')"
         :state="!errors.has('content')">

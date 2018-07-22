@@ -1,0 +1,9 @@
+dj-database-url==0.5.0
+Django==2.0.6
+django-configurations==2.0
+django-cors-headers==2.2.1
+django-templated-mail==1.1.1
+djangorestframework==3.8.2
+djoser==1.1.5
+psycopg2==2.7.5
+pytz==2018.4

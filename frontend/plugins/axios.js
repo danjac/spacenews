@@ -1,7 +1,6 @@
-export default function({ $axios }) {
-  // Django CSRF configuration
+export default function ({ $axios, redirect }) {
   $axios.onRequest(config => {
-    config.xsrfCookieName = 'csrftoken'
-    config.xsrfHeaderName = 'X-CSRFToken'
+    config.xsrfHeaderName = 'x-csrf-token'
+    config.xsrfCookieName = 'csrf-token'
   })
 }

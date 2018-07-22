@@ -19,7 +19,7 @@
           data-vv-as="password"
           data-vv-value-path="innerValue"
           name="password_rpt"
-          v-validate="'confirmed:target=password'"></b-form-input>
+          v-model="form.password_rpt"></b-form-input>
       </b-form-group>
       <b-button variant="primary" size="lg" type="submit">Signup</b-button>
     </b-form>

@@ -1,40 +1,31 @@
-version: '3'
+version: '3.4'
 
 services:
-    db:
-        restart: always
-        image: postgres
-    django:
-        build:
-            context: ./backend
-        command: ./wait-for-it.sh db:5432 -- pipenv run ./spacenews/manage.py runserver 0.0.0.0:8000
-        environment:
-            - DJANGO_SECRET_KEY=seekret
-            - DATABASE_URL=postgresql://postgres@db:5432/postgres
-        expose:
-            - "8000"
-        volumes:
-            - ./backend:/app
-        depends_on:
-            - db
-    nuxt:
-        build:
-            context: ./frontend
-        command: bash -c "npm run dev"
-        volumes:
-            - ./frontend:/app
-        expose:
-            - "3000"
-        ports:
-            - "3000:3000"
-        depends_on:
-            - django
-    nginx:
-        image: nginx:latest
-        ports:
-            - "8000:8000"
-        volumes:
-            - ./config/nginx:/etc/nginx/conf.d
-        depends_on:
-            - django
-            - nuxt
+  db:
+    restart: always
+    image: postgres
+
+  django:
+    build:
+      context: ./backend
+    environment:
+      - DATABASE_URL=postgres://postgres@db:5432/postgres
+      - DJANGO_SECRET_KEY=seekret
+    command: ./wait-for-it.sh db:5432 -- ./spacenews/manage.py runserver 0.0.0.0:8000
+    ports:
+      - "8000:8000"
+    volumes:
+      - ./backend:/app
+    depends_on:
+      - db
+
+  nuxt:
+    build:
+      context: ./frontend
+    command: bash -c "npm install && npm run dev"
+    volumes:
+      - ./frontend:/app
+    ports:
+      - "3000:3000"
+    depends_on:
+      - django

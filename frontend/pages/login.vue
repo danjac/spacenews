@@ -14,7 +14,6 @@
 
 <script>
 export default {
-  // middleware: ['auth'],
   data () {
     return {
       form: {
@@ -26,7 +25,7 @@ export default {
   methods: {
     async submit () {
       try {
-        await this.$auth.login({ data: this.form })
+        await this.$store.dispatch('login', this.form)
         this.$toast.success('Logged in')
       } catch(e) {
         this.$toast.error('Bad credentials')

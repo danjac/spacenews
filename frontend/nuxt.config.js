@@ -26,34 +26,12 @@ module.exports = {
   loading: { color: '#3B8070' },
   modules: [
     '@nuxtjs/axios',
-    '@nuxtjs/auth',
     '@nuxtjs/toast',
-    'bootstrap-vue/nuxt'
+    ['bootstrap-vue/nuxt', { css: false }]
   ],
-  axios: {
-    baseURL: 'http://django:8000',
-    browserBaseURL: 'http://localhost:8000'
-  },
   toast: {
     position: 'center',
     theme: 'bubble'
-  },
-  auth: {
-    fetchUserOnLogin: true,
-    endpoints: {
-      login: { url: '/api/auth/token/create/', method: 'post', propertyName: 'auth_token' },
-      logout: { url: '/api/auth/token/destroy/', method: 'post' },
-      user: { url: '/api/auth/me/', propertyName: false },
-    },
-    token: {
-      type: 'Token',
-      //name: 'token'
-      name: false
-    },
-    redirect: {
-      login: '/login',
-      home: '/'
-    }
   },
   /* Plugins */
   plugins: [

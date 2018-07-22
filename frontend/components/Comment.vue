@@ -4,7 +4,7 @@
     <p>
       Posted by [ <nuxt-link to="/">{{ comment.author.username }}</nuxt-link> ] {{ ago }}
     </p>
-    <p v-if="$auth.state.loggedIn">
+    <p v-if="$store.state.loggedIn">
       [ <a href="#" @click.prevent="toggleReplyForm">Reply</a> ]
     </p>
     <b-form v-show="showReplyForm" novalidate class="my-4" @submit.prevent="reply">
@@ -23,10 +23,10 @@
       <b-button type="reset" variant="secondary" @click.prevent="toggleReplyForm">Cancel</b-button>
      </b-form>
 
-    <comment v-for="comment in comment.comments" 
+    <comment v-for="comment in comment.comments"
              :comment="comment"
-             :key="comment.id" 
-             :style="style" 
+             :key="comment.id"
+             :style="style"
              :depth="depth + 10">
     </comment>
   </b-card>
