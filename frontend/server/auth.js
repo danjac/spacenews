@@ -1,7 +1,7 @@
 const axios = require('axios')
 const app = require('express')()
 
-const API_URI = process.env.API_URI || 'http://django:8000'
+const API_URI = process.env.API_URI
 
 app.post('/login/', async (req, res) => {
   try {

@@ -29,6 +29,8 @@ services:
   nuxt:
     build:
       context: ./frontend
+    environment:
+      - API_URI=http://django:8000
     command: bash -c "npm install && npm run dev"
     volumes:
       - ./frontend:/app

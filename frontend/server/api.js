@@ -1,10 +1,8 @@
 const proxy = require('http-proxy-middleware')
 const app = require('express')()
 
-const API_URI = process.env.API_URI || 'http://django:8000'
-
 app.use(proxy({
-  target: API_URI,
+  target: process.env.API_URI,
   changeOrigin: true,
   auth: false,
   logLevel: 'debug',
