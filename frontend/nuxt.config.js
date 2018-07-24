@@ -29,6 +29,12 @@ module.exports = {
     '@nuxtjs/toast',
     ['bootstrap-vue/nuxt', { css: false }]
   ],
+  serverMiddleware: [
+    '~/server/session',
+    '~/server/csrf',
+    '~/server/auth',
+    '~/server/api'
+  ],
   toast: {
     position: 'center',
     theme: 'bubble'
