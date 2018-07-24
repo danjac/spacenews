@@ -10,6 +10,8 @@ services:
   redis:
     restart: always
     image: redis
+    volumes:
+      - redisdata:/data
 
   django:
     build:
@@ -22,7 +24,6 @@ services:
       - "8000:8000"
     volumes:
       - ./backend:/app
-      - media:/app/media
     depends_on:
       - db
 
@@ -34,7 +35,6 @@ services:
     command: bash -c "npm install && npm run dev"
     volumes:
       - ./frontend:/app
-      - media:/app/media
     ports:
       - "3000:3000"
     depends_on:
@@ -43,4 +43,4 @@ services:
 
 volumes:
   pgdata:
-  media:
+  redisdata:
