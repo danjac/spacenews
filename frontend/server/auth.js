@@ -1,10 +1,7 @@
-const bodyParser = require('body-parser')
 const axios = require('axios')
 const app = require('express')()
 
 const API_URI = process.env.API_URI || 'http://django:8000'
-
-app.use(bodyParser.json())
 
 app.post('/login/', async (req, res) => {
   try {

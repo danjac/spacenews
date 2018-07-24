@@ -30,6 +30,7 @@ module.exports = {
     ['bootstrap-vue/nuxt', { css: false }]
   ],
   serverMiddleware: [
+    '~/server/body',
     '~/server/session',
     '~/server/csrf',
     '~/server/auth',
