@@ -1,8 +1,10 @@
 const proxy = require('http-proxy-middleware')
 const app = require('express')()
 
+// API_URI should end in /api/, and we remove that part in the URL.
 app.use(proxy({
   target: process.env.API_URI,
+  prependPath: false,
   changeOrigin: true,
   auth: false,
   logLevel: 'debug',

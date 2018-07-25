@@ -5,7 +5,7 @@ const API_URI = process.env.API_URI
 
 app.post('/login/', async (req, res) => {
   try {
-    const result = await axios.post(API_URI + '/api/auth/token/create/', req.body)
+    const result = await axios.post(API_URI + '/auth/token/create/', req.body)
     req.session.authToken = result.data.auth_token
     await req.session.save()
     return res.json({"OK": true})
@@ -18,7 +18,7 @@ app.post('/login/', async (req, res) => {
 app.post('/logout/', async (req, res) => {
   delete req.session.authToken
   await req.session.save()
-  axios.post(API_URI + '/api/auth/token/destroy/')
+  axios.post(API_URI + '/auth/token/destroy/')
   return res.status(200).json({ ok: true })
 })
 
